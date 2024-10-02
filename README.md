@@ -47,21 +47,40 @@ This smart task management app helps users organize their tasks, but unlike trad
 1. Clone the repository:
    ```bash
    git clone https://github.com/AlexanderO07/TaskFlow.git
-```
+   ```
 2. Navigate to project directory:
-```bash
-cd TaskFlow
-```
-3. Install dependencies for the frontend and backend.
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   cd TaskFlow
+   ```
+3. Set up a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For MacOS/Linux
+   .\venv\Scripts\activate   # For Windows
+   ```
+4. Install dependencies for the frontend and backend:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 
 ## Usage
+1. Start the backend server:
+   ```bash
+   python manage.py runserver
+   ```
+2. Start the frontend development server:
+   ```bash
+   npm start  # or yarn start
+   ```
+3. Open your web browser and navigate to [local host](http://localhost:3000) to view the app. 
+
+## Future Intentions
+- Develop and integrate a more advanced machine learning model to accurately predict task completion times and deliver personalized recommendations tailored to individual user behavior.
+- Deploy the application on a registered website domain to enhance accessibility and provide a professional online presence.
 
 ## Contributions 
-Contributions will be welcome in the future! At that time, please fork the repository and submit a pull request.
+Contributions, while not currently accepting, will be welcome in the future.
 
 ## License
-This project is licensed under the MIT License - see the 'LICENSE' file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/AlexanderO07/TaskFlow/blob/main/LICENSE) file for more details.
