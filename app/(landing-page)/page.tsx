@@ -32,7 +32,6 @@ export default async function IndexPage() {
         secondaryCtaText="GitHub"
         secondaryCtaLink="https://github.com/AlexanderO07"
       />
-
       <div id="features" />
       <FeatureGrid
         title="Features"
