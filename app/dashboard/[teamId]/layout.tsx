@@ -1,9 +1,9 @@
 'use client';
-
-import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout";
+// topics called teams
+import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout"; //sidebar
 import { SelectedTeamSwitcher, useUser } from "@stackframe/stack";
-import { BadgePercent, BarChart4, Columns3, Globe, Locate, Settings2, ShoppingBag, ShoppingCart, Users } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
+import { BadgePercent, BarChart4, Columns3, Globe, Key, Settings2, MessageCircleWarning, DiamondPlus, CircleX, Users } from "lucide-react"; //icons for menu
+import { useParams, useRouter } from "next/navigation"; //nav loading
 
 const navigationItems: SidebarItem[] = [
   {
@@ -17,54 +17,48 @@ const navigationItems: SidebarItem[] = [
     name: 'Management',
   },
   {
-    name: "Products",
-    href: "/products",
-    icon: ShoppingBag,
+    name: "New Chat",
+    href: "/newchat",
+    icon: DiamondPlus,
     type: "item",
   },
   {
-    name: "People",
-    href: "/people",
-    icon: Users,
+    name: "Insights",
+    href: "/insights",
+    icon: BarChart4,
     type: "item",
-  },
+  }, 
   {
-    name: "Segments",
-    href: "/segments",
+    name: "Chat Memory",
+    href: "/memory",
     icon: Columns3,
     type: "item",
   },
   {
-    name: "Regions",
-    href: "/regions",
-    icon: Locate,
+    name: "FlowTools",
+    href: "/flowtools",
+    icon: Key,
     type: "item",
   },
   {
     type: 'label',
-    name: 'Monetization',
+    name: 'Collaboration',
   },
   {
-    name: "Revenue",
-    href: "/revenue",
-    icon: BarChart4,
+    name: "Invitations",
+    href: "/invitations",
+    icon: MessageCircleWarning,
     type: "item",
   },
   {
-    name: "Orders",
-    href: "/orders",
-    icon: ShoppingCart,
-    type: "item",
-  },
-  {
-    name: "Discounts",
-    href: "/discounts",
-    icon: BadgePercent,
+    name: "Team Chat",
+    href: "/team-chat",
+    icon: Users,
     type: "item",
   },
   {
     type: 'label',
-    name: 'Settings',
+    name: 'Settings',     
   },
   {
     name: "Configuration",
@@ -76,9 +70,9 @@ const navigationItems: SidebarItem[] = [
 
 export default function Layout(props: { children: React.ReactNode }) {
   const params = useParams<{ teamId: string }>();
-  const user = useUser({ or: 'redirect' });
+  const user = useUser({ or: 'redirect' }); 
   const team = user.useTeam(params.teamId);
-  const router = useRouter();
+  const router = useRouter(); 
 
   if (!team) {
     router.push('/dashboard');

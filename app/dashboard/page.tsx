@@ -1,7 +1,7 @@
 import { PageClient } from "./page-client";
 
 export const metadata = {
-  title: "Dashboard - Stack Template",
+  title: "Taskflow - Getting Started",
 };
 
 export default function Dashboard() {
