@@ -39,7 +39,7 @@ This smart task management app helps users organize their tasks, but unlike trad
 ## Technologies
 - **Frontend**: React for the web app (or React Native for mobile).
 - **Backend**: Django REST framework for API development.
-- **Database**: PostgreSQL for storing tasks, user data, and historical information.
+- **Database**: Stack-Auth for storing tasks, user data, and historical information.
 - **AI/ML**: TensorFlow/Scikit-learn for implementing the machine learning model.
 - **Third-party APIs**: Google Calendar API for syncing tasks and time, and optionally Firebase for push notifications and user authentication.
 
