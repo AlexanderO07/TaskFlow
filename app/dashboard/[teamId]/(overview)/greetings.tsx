@@ -1,50 +1,76 @@
-import React from 'react';
+import { CurrentUser } from '@stackframe/stack';
+type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';
 
+interface GreetingsByTime {
+  [key: string]: {
+    greetings: string[];
+    questions: string[];
+  };
+}
 
-const greetingsByTime = {
-  morning: ["Good morning", "Hope you slept well", "Nice to see you"],
-  afternoon: ["Good afternoon", "Welcome", "Good seeing you again"],
-  evening: [
-    "Good evening",
-    "Hope you're having a great day",
-    "Nice to see you",
-  ],
-  night: ["Good night", "Sleep well", "Sweet dreams"],
-  other: ["Hey there", "Hi", "Howdy"],
+const greetingsByTime: GreetingsByTime = {
+  morning: {
+    greetings: ["Good morning", "Hope you slept well", "Nice to see you", "Hey there"],
+    questions: ["Up early", "Ready to start the day", "How did you sleep"]
+  },
+  afternoon: {
+    greetings: ["Good afternoon", "Welcome", "Good seeing you again", "Hi"],
+    questions: ["Having a good day", "Enjoying your afternoon", "How's your day going"]
+  },
+  evening: {
+    greetings: ["Good evening", "Hope you're having a great day", "Nice to see you"],
+    questions: ["Had a good day", "Ready to wind down", "Any plans for the evening"]
+  },
+  night: {
+    greetings: ["Good night", "Sleep well", "Sweet dreams", "Don't forget to rest"],
+    questions: ["Up late tonight", "Working late", "Still going strong"]
+  }
 };
 
 function getRandomGreeting() {
   const hour = new Date().getHours(); // Gets the current hour
-  let greetingList;
+  let timeOfDay: TimeOfDay;
 
   if (hour >= 5 && hour < 12) {
-    greetingList = greetingsByTime.morning; // Morning (5 AM - 12 PM)
+    timeOfDay = 'morning'; // Morning (5 AM - 12 PM)
   } else if (hour >= 12 && hour < 18) {
-    greetingList = greetingsByTime.afternoon; // Afternoon (12 PM - 6 PM)
-  } else if (hour >= 18 && hour < 22) {
-    greetingList = greetingsByTime.evening; // Evening (6 PM - 10 PM)
+    timeOfDay = 'afternoon'; // Afternoon (12 PM - 6 PM)
+  } else if (hour >= 18 && hour < 20) {
+    timeOfDay = 'evening'; // Evening (6 PM - 8 PM)
   } else {
-    greetingList = greetingsByTime.night; // Night (10 PM - 5 AM)
+    timeOfDay = 'night'; // Night (8 PM - 5 AM)
   }
 
-  // Selecting a random greeting from the chosen list
-  const randomGreeting =
-    greetingList[Math.floor(Math.random() * greetingList.length)];
-  return randomGreeting;
-}
-export function Greetings() {
-    const greeting = getRandomGreeting();
+  // Randomly choose between a greeting or a question 
+  const isQuestion = Math.random() < 0.4; // 40% chance
+  const greetingList = isQuestion ? greetingsByTime[timeOfDay].questions : greetingsByTime[timeOfDay].greetings;
 
-  // Check if user exists and fallback to 'User' if null
+  // Selecting a random greeting or question from the chosen list
+  const randomGreeting = greetingList[Math.floor(Math.random() * greetingList.length)];
+  
+  //determine punctuation based on whether it's a question or a greeting
+  const punctuation = isQuestion ? '?' : '!';
+  
+  return { greeting: randomGreeting, punctuation };
+}
+
+interface User {
+  displayName?: string;
+  email?: string;
+}
+
+interface GreetingsProps {
+  user: CurrentUser | null; 
+}
+//add debounce or wait to stop changing on reload
+export function Greetings({ user }: GreetingsProps) {
+  const { greeting, punctuation } = getRandomGreeting();
+  const displayName = user?.displayName || (user?.primaryEmail ? user.primaryEmail.split('@')[0] : "user");
+
 
   return (
-    <h2 className="text-2xl font-bold tracking-tight">
-      <span
-        className="ogreeting"
-        style={{ position: "relative", display: "flex", flexWrap: "wrap" }}
-      >
-        {greeting}, &thinsp; admin !
-      </span>
-    </h2>
+    <span className="ogreeting" style={{ position: "relative", display: "flex", flexWrap: "wrap" }}>
+      {greeting}, {displayName}{punctuation}
+    </span>
   );
 }

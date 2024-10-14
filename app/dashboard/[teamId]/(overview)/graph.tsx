@@ -67,9 +67,9 @@ export function Graph() {
         <YAxis
           stroke="#888888"
           fontSize={12}
-          tickLine={false}
+          tickLine={true}
           axisLine={false}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => `{value}`}
         />
         <Bar
           dataKey="total"

@@ -1,0 +1,56 @@
+.body {
+  overflow: auto;
+  position: absolute;
+}
+#smallpadding {
+    height: 50px;
+}
+
+#mediumpadding {
+    height: 100px;
+}
+.welcometext {
+  position: relative;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+  z-index: 100;
+  background-color: transparent;
+  font-size: larger;
+  font-weight: 600;
+  scale: 1.6;
+}
+
+.chatcontainer {
+  display: flex;
+  justify-content: center; 
+}
+
+.input-container {
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  max-width: 800px; 
+  border-radius: 30px;
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  overflow: hidden; /* To clip the icon at the end */
+}
+
+.chatbox {
+  text-align: start;
+  padding: 0.375rem;
+  border: none; 
+  flex-grow: 1; 
+  border-radius: 27px; 
+  outline: none; 
+}
+
+.send-icon {
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  padding: 0.375rem; 
+  display: flex;
+  align-items: center; 
+  transform: translateY(-2.5%);
+}

@@ -12,12 +12,25 @@ export function PageClient() {
   const user = useUser({ or: "redirect" });
   const teams = user.useTeams();
   const [topicDisplayName, settopicDisplayName] = React.useState("");
+  const [error, setError] = React.useState(""); // State for error messages
 
   React.useEffect(() => {
     if (teams.length > 0 && !user.selectedTeam) {
       user.setSelectedTeam(teams[0]);
     }
   }, [teams, user]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await user.createTeam({ displayName: topicDisplayName });
+      // Optionally, reset the input field or navigate to another page
+      settopicDisplayName(""); // Clear input
+    } catch (error) {
+      setError("Failed to create team. Please try again."); // Set error message
+      console.error("Failed to create team:", error);
+    }
+  };
 
   if (teams.length === 0) {
     return (
@@ -27,13 +40,8 @@ export function PageClient() {
           <p className="text-center text-gray-500">
             Create a task topic to get started
           </p>
-          <form
-            className="mt-4"
-            onSubmit={(e) => {
-              e.preventDefault();
-              user.createTeam({ displayName: topicDisplayName });
-            }}
-          >
+          {error && <p className="text-red-500 text-center">{error}</p>} {/* Error message display */}
+          <form className="mt-4" onSubmit={handleSubmit}>
             <div>
               <Label className="text-sm">Topic name</Label>
               <Input

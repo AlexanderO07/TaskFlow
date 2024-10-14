@@ -24,6 +24,62 @@ export default async function IndexPage() {
 
   return (
     <>
+    <div className="marquee">
+      <div className="wrapper">
+        <div className="itemLeft item1">Buy Milk and Cookies</div>
+        <div className="itemLeft item2">Attend team meeting on Tuesday</div>
+        <div className="itemLeft item3">Complete project report</div>
+        <div className="itemLeft item4">Schedule doctor’s appointment</div>
+        <div className="itemLeft item5">Clean the house</div>
+        <div className="itemLeft item6">Take Chompers to the vet</div>
+        <div className="itemLeft item7">Pick up dry cleaning</div>
+        <div className="itemLeft item8">Call Mom</div>
+      </div>
+      <div className="wrapper">
+        <div className="itemRight item1">Research vacation options</div>
+        <div className="itemRight item2">Attend yoga className</div>
+        <div className="itemRight item3">Mail card to Sarah for her birthday</div>
+        <div className="itemRight item4">Go to yoga class on Thursday</div>
+        <div className="itemRight item5">Research vacation options</div>
+        <div className="itemRight item6">Water all houseplants</div>
+        <div className="itemRight item7">Buy replacement washer </div>
+        <div className="itemRight item8">
+          Try making chicken tikka masala on Tuesday night
+        </div>
+      </div>
+      <div className="wrapper">
+        <div className="itemLeft item1">Buy Milk and Cookies</div>
+        <div className="itemLeft item2">Attend team meeting on Tuesday</div>
+        <div className="itemLeft item3">Complete project report</div>
+        <div className="itemLeft item4">Schedule doctor’s appointment</div>
+        <div className="itemLeft item5">Clean the house</div>
+        <div className="itemLeft item6">Take Chompers to the vet</div>
+        <div className="itemLeft item7">Pick up dry cleaning</div>
+        <div className="itemLeft item8">Call Mom</div>
+      </div>
+      <div className="wrapper">
+        <div className="itemRight item1">Research vacation options</div>
+        <div className="itemRight item2">Attend yoga className</div>
+        <div className="itemRight item3">Mail card to Sarah for her birthday</div>
+        <div className="itemRight item4">Go to yoga class on Thursday</div>
+        <div className="itemRight item5">Research vacation options</div>
+        <div className="itemRight item6">Water all houseplants</div>
+        <div className="itemRight item7">Buy replacement washer </div>
+        <div className="itemRight item8">
+          Try making chicken tikka masala on Tuesday night
+        </div>
+      </div>
+      <div className="wrapper">
+        <div className="itemLeft item1">Buy Milk and Cookies</div>
+        <div className="itemLeft item2">Attend team meeting on Tuesday</div>
+        <div className="itemLeft item3">Complete project report</div>
+        <div className="itemLeft item4">Schedule doctor’s appointment</div>
+        <div className="itemLeft item5">Clean the house</div>
+        <div className="itemLeft item6">Take Chompers to the vet</div>
+        <div className="itemLeft item7">Pick up dry cleaning</div>
+        <div className="itemLeft item8">Call Mom</div>
+      </div>
+      </div>
       <Hero
         title="TaskFlow"
         subtitle="Your AI-powered task management assistant that prioritizes tasks based on urgency, deadlines, and user habits."
@@ -62,10 +118,10 @@ export default async function IndexPage() {
                   y2="208"
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeWidth="22"
-                ></line>
+                />
                 <line
                   x1="192"
                   y1="40"
@@ -73,10 +129,10 @@ export default async function IndexPage() {
                   y2="192"
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeWidth="22"
-                ></line>
+                />
               </svg>
             ),
             title: "Fully Costumizable",
@@ -99,21 +155,24 @@ export default async function IndexPage() {
             title: "Chat History and Habit Analysis",
             description:
               "Storage of All Tasks and simple visualization for analysis with a dashboard of productivity metrics",
-            },
+          },
           {
             icon: <Users className="h-12 w-12" />,
             title: "AI-Powered Task Prioritization",
-            description: "Machine Learning Model trained on over 1,000,000+ words and phrases.",
+            description:
+              "Machine Learning Model trained on over 300,000,000,000+ words!",
           },
           {
             icon: <GitHubLogoIcon className="h-12 w-12" />,
             title: "100% Free and Open-source",
-            description: "Built with React, Stack-Auth, 0Auth, SciKit-learn, Google Calender/Firebase, and various GPT API's.",
+            description:
+              "Built with React, Stack-Auth, 0Auth, SciKit-learn, Google Calender/Firebase, and various GPT API's.",
           },
           {
             icon: <ComponentIcon className="h-12 w-12" />,
             title: "Modular Design",
-            description: "Clear intructions to help you get started with TaskFlow.",
+            description:
+              "Clear intructions to help you get started with TaskFlow.",
           },
         ]}
       />
@@ -146,8 +205,8 @@ export default async function IndexPage() {
               "100% Open-source",
               "Community support",
               "Free forever",
-              "No credit card required", 
-              "Increased chat memory storage"
+              "No credit card required",
+              "Increased chat memory storage",
             ],
             buttonText: "Upgrade to Pro",
             isPopular: true,
@@ -164,7 +223,7 @@ export default async function IndexPage() {
               "Free forever",
               "No credit card required",
               "Maximum chat memory storage",
-              "24/7 Developer Support"
+              "24/7 Developer Support",
             ],
             buttonText: "Contact Us",
             buttonHref: stackServerApp.urls.signUp,

@@ -1,14 +1,13 @@
 'use client';
-// topics called teams
-import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout"; //sidebar
+import SidebarLayout, { SidebarItem } from "@/components/sidebar-layout"; // sidebar
 import { SelectedTeamSwitcher, useUser } from "@stackframe/stack";
-import { BadgePercent, BarChart4, Columns3, Globe, Key, Settings2, MessageCircleWarning, DiamondPlus, CircleX, Users } from "lucide-react"; //icons for menu
-import { useParams, useRouter } from "next/navigation"; //nav loading
+import { BarChart4, Columns3, Globe, Key, Settings2, MessageCircleWarning, DiamondPlus, Users } from "lucide-react"; // icons for menu
+import { useParams, useRouter } from "next/navigation"; // nav loading
 
 const navigationItems: SidebarItem[] = [
   {
     name: "Overview",
-    href: "/",
+    href: "/", // main dashboard page
     icon: Globe,
     type: "item",
   },
@@ -18,25 +17,25 @@ const navigationItems: SidebarItem[] = [
   },
   {
     name: "New Chat",
-    href: "/newchat",
+    href: "/sections/new-chat",
     icon: DiamondPlus,
     type: "item",
   },
   {
     name: "Insights",
-    href: "/insights",
+    href: "/sections/insights",
     icon: BarChart4,
     type: "item",
-  }, 
+  },
   {
     name: "Chat Memory",
-    href: "/memory",
+    href: "/sections/chat-memory",
     icon: Columns3,
     type: "item",
   },
   {
     name: "FlowTools",
-    href: "/flowtools",
+    href: "/sections/flowtools",
     icon: Key,
     type: "item",
   },
@@ -46,23 +45,23 @@ const navigationItems: SidebarItem[] = [
   },
   {
     name: "Invitations",
-    href: "/invitations",
+    href: "/sections/invitations",
     icon: MessageCircleWarning,
     type: "item",
   },
   {
     name: "Team Chat",
-    href: "/team-chat",
+    href: "/sections/team-chat",
     icon: Users,
     type: "item",
   },
   {
     type: 'label',
-    name: 'Settings',     
+    name: 'Settings',
   },
   {
     name: "Configuration",
-    href: "/configuration",
+    href: "/sections/config",
     icon: Settings2,
     type: "item",
   },
@@ -70,20 +69,31 @@ const navigationItems: SidebarItem[] = [
 
 export default function Layout(props: { children: React.ReactNode }) {
   const params = useParams<{ teamId: string }>();
-  const user = useUser({ or: 'redirect' }); 
+  const user = useUser({ or: 'redirect' });
   const team = user.useTeam(params.teamId);
-  const router = useRouter(); 
+  const router = useRouter();
 
   if (!team) {
     router.push('/dashboard');
     return null;
   }
 
+  // Update the navigation items with the actual team ID
+  const navigationItemsWithTeamId = navigationItems.map(item => {
+    if (item.type === "item" && item.href) {
+      return {
+        ...item,
+        href: item.href.replace(/\[teamId\]/g, team.id), // Replace dynamic part to fix href errors
+      };
+    }
+    return item; // Return unchanged items
+  });
+
   return (
-    <SidebarLayout 
-      items={navigationItems}
+    <SidebarLayout
+      items={navigationItemsWithTeamId} 
       basePath={`/dashboard/${team.id}`}
-      sidebarTop={<SelectedTeamSwitcher 
+      sidebarTop={<SelectedTeamSwitcher
         selectedTeam={team}
         urlMap={(team) => `/dashboard/${team.id}`}
       />}

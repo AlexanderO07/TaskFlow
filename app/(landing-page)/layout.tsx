@@ -1,4 +1,4 @@
-// import { Footer } from "@/components/footer"; (Note: No footer needed at this time.)
+// import { Footer } from "@/components/footer"; 
 import { LandingPageHeader } from "@/components/landing-page-header";
 
 export default function Layout(props: { children: React.ReactNode }) {

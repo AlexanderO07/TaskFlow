@@ -3,7 +3,7 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
-import { Tooltip } from "./Tooltip"; // Your custom tooltip component
+import { Tooltip } from "./tooltip"; // Your custom tooltip component
 
 export function ColorModeSwitcher() {
   const { setTheme } = useTheme();
