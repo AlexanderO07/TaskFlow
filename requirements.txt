@@ -1,0 +1,9 @@
+#  reqs
+Django==4.2.3
+djangorestframework==3.14.0
+psycopg2-binary==2.9.5  # PostgreSQL adapter
+TensorFlow==2.13.0  # For AI/ML
+scikit-learn==1.3.0  # For machine learning
+requests==2.31.0  # For making HTTP requests (e.g., to Google Calendar API)
+python-dotenv==1.0.0  # For loading environment variables from .env file
+React==16.8.0 #React version
