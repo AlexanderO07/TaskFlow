@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { CurrentUser } from '@stackframe/stack';
+import '../../../globals.css';
+
 type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';
 
 interface GreetingsByTime {
@@ -50,27 +53,31 @@ function getRandomGreeting() {
   
   //determine punctuation based on whether it's a question or a greeting
   const punctuation = isQuestion ? '?' : '!';
-  
+
   return { greeting: randomGreeting, punctuation };
 }
 
-interface User {
-  displayName?: string;
-  email?: string;
+interface GreetingsProps {
+  user: CurrentUser | null;
 }
 
-interface GreetingsProps {
-  user: CurrentUser | null; 
-}
-//add debounce or wait to stop changing on reload
 export function Greetings({ user }: GreetingsProps) {
-  const { greeting, punctuation } = getRandomGreeting();
+  const [greetingMessage, setGreetingMessage] = useState<{ greeting: string; punctuation: string } | null>(null);
+
+  // Only generate the greeting once on mount
+  useEffect(() => {
+    if (!greetingMessage) {
+      const { greeting, punctuation } = getRandomGreeting();
+      setGreetingMessage({ greeting, punctuation });
+    }
+  }, [greetingMessage]);
+
   const displayName = user?.displayName || (user?.primaryEmail ? user.primaryEmail.split('@')[0] : "user");
 
-
+  //render if the greeting has been set
   return (
     <span className="ogreeting" style={{ position: "relative", display: "flex", flexWrap: "wrap" }}>
-      {greeting}, {displayName}{punctuation}
+      {greetingMessage ? `${greetingMessage.greeting}, ${displayName}${greetingMessage.punctuation}` : ''}
     </span>
   );
 }

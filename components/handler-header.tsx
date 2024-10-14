@@ -3,17 +3,24 @@
 import { ArrowLeftToLine } from "lucide-react"; //icons for back button
 import { UserButton, useUser } from "@stackframe/stack";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation"; // Correct router import for Next.js app dir
+import React, { useEffect, useState } from "react";
 import { Logo } from "./logo";
-
-// type Back = {
-//   name: React.ReactNode;
-//   href: string;
-//   icon: LucideIcon;
-// };
 
 export default function HandlerHeader() {
   const user = useUser();
   const { theme, setTheme } = useTheme();
+  const router = useRouter(); // Initialize router
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Ensure that the component is mounted before using router
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // Prevent rendering until component is mounted
+  }
 
   return (
     <>
@@ -27,20 +34,20 @@ export default function HandlerHeader() {
             }
           />
         </div>
-<div className="fixed w-full z-50 p-4 h-14 flex items-center py-4 border-b justify-content bg-background dark font-weight-bold">
-  <button
-    type="button"
-    onClick={(e) => {
-      e.preventDefault();
-      window.history.back();
-    }}
-    className="flex items-center" // Align icon and text
-  >
-    <ArrowLeftToLine className="mr-2" /> {/* Add margin for spacing */}
-    Back
-  </button>
-</div>
 
+        <div className="fixed w-full z-50 p-4 h-14 flex items-center py-4 border-b justify-content bg-background dark font-weight-bold">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              router.push("/dashboard"); // Navigate to 1st team dashboard
+            }}
+            className="flex items-center" // Align icon and text
+          >
+            <ArrowLeftToLine className="mr-2" /> {/* Add margin for spacing */}
+            Back
+          </button>
+        </div>
       </header>
       <div className="min-h-14" /> {/* Placeholder for fixed header */}
     </>

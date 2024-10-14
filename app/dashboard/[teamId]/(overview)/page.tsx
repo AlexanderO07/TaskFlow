@@ -1,9 +1,9 @@
 "use client";
-import React from 'react';
+import React from "react";
 import { Metadata } from "next";
 import { Greetings } from "@/app/dashboard/[teamId]/(overview)/greetings";
 import { RecentTasks } from "@/app/dashboard/[teamId]/(overview)/recent-tasks";
-import { useUser } from '@stackframe/stack'; // Corrected import
+import { useUser } from "@stackframe/stack"; // Corrected import
 
 import {
   Card,
@@ -26,7 +26,7 @@ export default function DashboardPage() {
               className="text-2xl font-bold tracking-tight"
               style={{ display: "inline-flex" }}
             >
-              <Greetings user={user} />  
+              <Greetings user={user} />
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -127,7 +127,8 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold" style={{ color: "red" }}>
-                  Due: 8:35PM </div>
+                  Due: 8:35PM{" "}
+                </div>
                 <p className="text-xs text-muted-foreground">
                   In 3 hours and 23 minutes
                 </p>
@@ -158,5 +159,5 @@ export default function DashboardPage() {
         </div>
       </div>
     </>
- );
+  );
 }

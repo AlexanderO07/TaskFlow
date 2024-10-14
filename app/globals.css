@@ -197,7 +197,6 @@
   animation-timing-function: linear;
   animation-duration: 30s;
   animation-iteration-count: infinite;
-  font-family: 'Sans-serif', sans-serif;
   color: grey;
   padding: 10px;
   box-sizing: border-box;
@@ -234,4 +233,25 @@
 .item6 { animation-delay: calc(30s / 8 * (8 - 6) * -1); }
 .item7 { animation-delay: calc(30s / 8 * (8 - 7) * -1); }
 .item8 { animation-delay: calc(30s / 8 * (8 - 8) * -1); }
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: transparent; } 
+}
+
+.ogreeting {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid ; 
+  width: fit-content;
+  
+  /* Apply the typewriter animation */
+  animation: typewriter 1.05s steps(40, end), blinkCursor 0.75s step-end infinite;
+  animation-delay: 0s, 3s; 
+}
 
