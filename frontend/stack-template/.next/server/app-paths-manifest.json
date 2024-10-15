@@ -1,0 +1,5 @@
+{
+  "/(landing-page)/page": "app/(landing-page)/page.js",
+  "/dashboard/[teamId]/(overview)/page": "app/dashboard/[teamId]/(overview)/page.js",
+  "/handler/[...stack]/page": "app/handler/[...stack]/page.js"
+}
